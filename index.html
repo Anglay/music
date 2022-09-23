@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>微信视频号：hepingfly的百宝箱</title>
+    <title>JAY</title>
     <link rel="stylesheet" href="./css/base.css">
 </head>
 <body>
@@ -18,7 +18,6 @@
         <div class="first-loading"></div>
         <div>
             <br>加载中，请稍后...</br>
-            <br>我的微信视频号：「hepingfly的百宝箱」 欢迎你的关注呀</br>
         </div>
     </div>
     <!--列表-->
@@ -37,55 +36,20 @@
     <!--播放器-->
     <div class="player-wrap">
         <div class="player-item" v-if="playing">
-            <div class="pic" @click="showModal"><img :src="playing.pic" alt=""></div>
+            <div class="pic"><img :src="playing.pic" alt=""></div>
             <audio controls ref="Audio" :src="playing.url"></audio>
-        </div>
-    </div>
-    <!--歌曲详情-->
-    <div class="modal player-info-wrap" v-show="show">
-        <div class="modal-wrapper">
-            <div class="modal-content" v-if="playing">
-                <h2>{{playing.title}}</h2>
-                <img class="info-img" :src="playing.pic" alt="">
-                <div class="lrc" v-if="playing.lrcData">
-                    <ol>
-                        <li v-for="(v) in playing.lrcData">{{v}}</li>
-                    </ol>
-                </div>
-                <button class="close" @click="show = false">×</button>
-            </div>
         </div>
     </div>
 </div>
 <script src="./libs/vue.min.js"></script>
 <script src="./libs/axios.min.js"></script>
 <script>
-    function formatLrc(str) {
-        let lrcObj = {}
-        const regExp = /\[(\d{2}):(\d{2})\.(\d{2})\](.*)/g
-        while (1) {
-            let result = regExp.exec(str)
-            if (result) {
-                const time = (parseInt(result[1]) * 60) + (parseInt(result[2]))
-                lrcObj[time] = result[4]
-            } else {
-                break
-            }
-        }
-        for (let i in lrcObj) {
-            if (!lrcObj[i]) {
-                delete lrcObj[i]
-            }
-        }
-        return lrcObj
-    }
 
     new Vue({
         el: '#app',
         data: {
             list: [],
             playing: null,
-            show: false,
         },
         created() {
         },
@@ -93,15 +57,6 @@
             this.getList()
         },
         methods: {
-            // 显示歌词
-            showModal() {
-                this.show = true
-                const id = this.playing.songid
-                axios.get(`./music/musicLrc/${id}.json`).then(res => {
-                    const src = formatLrc(res.data.lrc)
-                    this.playing = Object.assign(this.playing, {lrcData: src})
-                })
-            },
             getList() {
                 const url = `./music/musicList.json?timestamp=${Date.now()}`
                 axios.get(url).then(res => {
@@ -139,7 +94,6 @@
             toPlay(index) {
                 const item = this.list[index]
                 const audio = this.$refs.Audio
-                item.lrcData = formatLrc(item.lrc)
 
                 if (this.playing.songid === item.songid && !audio.paused) {
                     this.$nextTick(() => {
