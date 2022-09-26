@@ -65,7 +65,7 @@
                         item.url = `./music/musics/${item.path}`
                         return item
                     })
-                    this.playing = Object.assign({lrcData: ''}, this.list[0])
+                    this.playing = Object.assign({}, this.list[0])
 
                     // 播放完毕之后自动播放下一首
                     this.$nextTick(() => {
@@ -94,15 +94,19 @@
             toPlay(index) {
                 const item = this.list[index]
                 const audio = this.$refs.Audio
-
                 if (this.playing.songid === item.songid && !audio.paused) {
                     this.$nextTick(() => {
                         this.$refs.Audio.pause()
                     })
                 } else {
-                    this.playing = Object.assign({lrcData: ''}, item)
+                    this.playing = Object.assign({}, item)
                     this.$nextTick(() => {
-                        audio.play()
+                        audio.addEventListener("canplaythrough", function() {
+                            setTimeout(() => {
+                                audio.play();
+                            },500)
+                        }, false);
+                        audio.load();
                     })
                 }
 
