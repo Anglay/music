@@ -1,0 +1,34 @@
+.music-singer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  &__item {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    width: calc(25% - 20px);
+    float: left;
+    overflow: hidden;
+    cursor: pointer;
+    .singer-photo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      height: 80px;
+      width: 100%;
+      img {
+        max-height: 100%;
+      }
+    }
+    .singer-name{
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+}

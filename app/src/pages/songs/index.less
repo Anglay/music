@@ -1,0 +1,30 @@
+.music-songs {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 5px 10px;
+    &__item{
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid #f0f0f0;
+        &:last-child {
+            border: none;
+        }
+        .music-index {
+            padding: 0 5px;
+        }
+        &.music-playing {
+            background-color: rgba(216, 30, 6, 0.25);
+            color: #d81e06;
+            border-bottom: 1px solid #d81e06;
+            .music-index {
+                font-weight: bold;
+            }
+        }
+    }
+    
+}
