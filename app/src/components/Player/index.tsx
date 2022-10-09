@@ -44,11 +44,11 @@ export default () => {
     }, [selectedSong, selectedSinger])
 
     const mp3Url = useMemo(() => {
-        return `/jsons/${playing.pid}/musics/${playing.mid}/${playing.mid}.mp3`;
+        return `./jsons/${playing.pid}/musics/${playing.mid}/${playing.mid}.mp3`;
     }, [playing])
 
     const lrcUrl = useMemo(() => {
-        return `/jsons/${playing.pid}/musics/${playing.mid}/${playing.mid}.json`;
+        return `./jsons/${playing.pid}/musics/${playing.mid}/${playing.mid}.json`;
     }, [playing])
 
 

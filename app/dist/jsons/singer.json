@@ -2,21 +2,21 @@
     {
         "name": "周杰伦",
         "pid": "Bav206719735",
-        "photo":"/imgs/Bav206719735.jpeg"
+        "photo":"./imgs/Bav206719735.jpeg"
     },
     {
         "name": "陈奕迅",
         "pid": "Bav35761086",
-        "photo":"/imgs/Bav35761086.png"
+        "photo":"./imgs/Bav35761086.png"
     },
     {
         "name": "张学友",
         "pid": "Bav35754538",
-        "photo":"/imgs/Bav35754538.webp"
+        "photo":"./imgs/Bav35754538.webp"
     },
     {
         "name": "伍佰",
         "pid": "Bav93047719",
-        "photo":"/imgs/Bav93047719.webp"
+        "photo":"./imgs/Bav93047719.webp"
     }
 ]

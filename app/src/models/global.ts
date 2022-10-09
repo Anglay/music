@@ -2,10 +2,10 @@ import request from 'umi-request'
 
 const services = {
     getSingers(){
-        return request(`/jsons/singer.json`)
+        return request(`./jsons/singer.json`)
     },
     getSongs(payload: any){
-        return request(`/jsons/${payload.pid}/data.json`)
+        return request(`./jsons/${payload.pid}/data.json`)
     },
     getLrc(payload: any){
         return request(`${payload.lrcUrl}`)
