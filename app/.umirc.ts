@@ -11,7 +11,7 @@ export default defineConfig({
     type: 'none',
   },
   fastRefresh: {},
-  publicPath: '/app/dist/',
-  base: '/app/dist/',
-  favicon: '/app/dist/favicon.ico',
+  publicPath: process.env.NODE_ENV === 'development' ? '/' : '/app/dist/',
+  base: process.env.NODE_ENV === 'development' ? '/' : '/app/dist/',
+  favicon: process.env.NODE_ENV === 'development' ? '/' : '/app/dist/favicon.ico',
 });
